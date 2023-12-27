@@ -17,20 +17,18 @@ class Home extends CI_controller
 	function __construct()
 	{
 	 parent:: __construct();
-     $this->load->helper('url');
-      // needed ???
-      $this->load->database();
-      $this->load->library('session');
-      
+   $this->load->helper('url');
+   // needed ???
+   $this->load->database();
+   $this->load->library('session');
+    $this->load->library('form_validation');
 	 // error_reporting(0);
 	 if($this->session->userdata('admin') != TRUE){
-     redirect(base_url(''));
+    redirect(base_url(''));
      exit;
 	};
-	 $this->load->model('M_admin');
-	 $this->load->model('m_balita');
-
-	}
+   $this->load->model('m_balita'); 
+}
 
 	public function index($id='')
 	{

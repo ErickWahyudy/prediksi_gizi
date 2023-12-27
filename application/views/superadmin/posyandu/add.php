@@ -1,10 +1,77 @@
 <?php $this->load->view('template/header'); ?>
 <?= $this->session->flashdata('pesan'); ?>
 
+<?php if($depan == TRUE): 
+      $kode_tahun = date("Y");
+      $kode_bulan = date("m");
+      
+?>
 <div class="row">
     <div class="col-md-12 col-sm-12 ">
         <div class="x_panel">
             <div class="x_content">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card-box table-responsive">
+                            <table class="" style="width:100%">
+                                <form action="" method="POST">
+                                    <tr>
+                                        <th>Bulan</th>
+                                        <td>
+                                            <select name="bulan" class="form-control" required="">
+                                                <option value="">--Pilih Bulan--</option>
+                                                <?php
+                                                $bulan = array(
+                                                    '1' => 'Januari',
+                                                    '2' => 'Februari',
+                                                    '3' => 'Maret',
+                                                    '4' => 'April',
+                                                    '5' => 'Mei',
+                                                    '6' => 'Juni',
+                                                    '7' => 'Juli',
+                                                    '8' => 'Agustus',
+                                                    '9' => 'September',
+                                                    '10' => 'Oktober',
+                                                    '11' => 'November',
+                                                    '12' => 'Desember',
+                                                ); foreach ($bulan as $key => $value) { ?>
+                                                    <option value="<?= $key ?>" <?php if($key == $kode_bulan){echo "selected";} ?>><?= $value ?></option>
+                                                <?php } ?>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Tahun</th>
+                                        <td>
+                                            <input type="number" name="tahun" class="form-control" value="<?= $kode_tahun ?>" placeholder="tahun"
+                                                required="">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th></th>
+                                        <td><br>
+                                            <input type="submit" name="cari" value="Buka Data" class="btn btn-primary">
+                                        </td>
+                                    </tr>
+                                </form>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<?php elseif($depan == FALSE): ?>
+<div class="row">
+    <div class="col-md-12 col-sm-12 ">
+        <div class="x_panel">
+            <div class="x_content">
+                <div>
+                    <h2 class="text-center">Buat Data Bulan <?= bulan($bulan) ?> Tahun <?= $tahun ?></h2>
+                </div>
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="card-box table-responsive">
@@ -42,42 +109,12 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td width="20%">Bulan</td>
-                                        <td width="80%">
-                                            <select name="bulan" class="form-control" required="">
-                                                <option value="">--Pilih Bulan--</option>
-                                                <?php
-                                                $bulan = array(
-                                                    '1' => 'Januari',
-                                                    '2' => 'Februari',
-                                                    '3' => 'Maret',
-                                                    '4' => 'April',
-                                                    '5' => 'Mei',
-                                                    '6' => 'Juni',
-                                                    '7' => 'Juli',
-                                                    '8' => 'Agustus',
-                                                    '9' => 'September',
-                                                    '10' => 'Oktober',
-                                                    '11' => 'November',
-                                                    '12' => 'Desember',
-                                                );
-                                                foreach ($bulan as $key => $value) { ?>
-                                                    <option value="<?= $key ?>"><?= $value ?></option>
-                                                <?php } ?>
-                                            </select>
+                                        <td>
+                                            <input type="hidden" name="bulan" class="form-control" value="<?= $bulan ?>" placeholder="Bulan" autocomplete="off" readonly>
+                                            <input type="hidden" name="tahun" class="form-control" value="<?= $tahun ?>" placeholder="Tahun" autocomplete="off" readonly>
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td width="20%">Tahun</td>
-                                        <td width="80%">
-                                            <input type="text" name="tahun" class="form-control" placeholder="Tahun" value="<?= date('Y') ?>" autocomplete="off" required>
-                                        </td>
-                                    </tr>
-                                    
-                                    <tr>
-                                        <td></td>
                                         <td colspan="2"><br>
-                                            <a href="<?= base_url('superadmin/posyandu/data'); ?>" class="btn btn-danger btn-sm">Lihat Data</a>
+                                            <a href="<?= base_url('superadmin/posyandu/data/add') ?>" class="btn btn-danger btn-sm">Kembali</a>
                                             <button type="submit" class="btn btn-primary btn-sm" name="submit" value="submit">Simpan</button>
                                         </td>
                                     </tr>                                  
@@ -179,4 +216,27 @@
     });
 </script>
 
+<?php endif; ?>
+<?php
+
+function bulan($bln)
+{
+    $bulan = array(
+        '1' => 'Januari',
+        '2' => 'Februari',
+        '3' => 'Maret',
+        '4' => 'April',
+        '5' => 'Mei',
+        '6' => 'Juni',
+        '7' => 'Juli',
+        '8' => 'Agustus',
+        '9' => 'September',
+        '10' => 'Oktober',
+        '11' => 'November',
+        '12' => 'Desember',
+    );
+    return $bulan[$bln];
+}
+
+?>
 <?php $this->load->view('template/footer'); ?>

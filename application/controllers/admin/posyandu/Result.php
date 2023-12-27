@@ -9,7 +9,7 @@ class Result extends CI_controller
         $this->load->database();
         $this->load->library('session');
 
-        if ($this->session->userdata('superadmin') != TRUE) {
+        if ($this->session->userdata('admin') != TRUE) {
             redirect(base_url(''));
             exit;
         }

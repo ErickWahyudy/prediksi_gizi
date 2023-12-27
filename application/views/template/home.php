@@ -14,7 +14,7 @@
         </div>
         <div class="animated flipInY col-lg-3 col-md-3 col-sm-3 col-xs-12">
             <div class="tile-stats">
-            <a href="<?= base_url('superadmin/balita/tambah_data') ?>">
+            <a href="<?= base_url('superadmin/balita') ?>">
                 <div class="icon"><i class="fa fa-smile-o"></i></div>
                 <div class="count"><i class="fa fa-plus"></i></div>
                 <h3 style="color: #1ABB9C;">Tambah Data Balita</h3>
@@ -23,9 +23,19 @@
         </div>
         <div class="animated flipInY col-lg-3 col-md-3 col-sm-3 col-xs-12">
             <div class="tile-stats">
-            <a href="<?= base_url('superadmin/posyandu/status_gizi') ?>">
+            <a href="<?= base_url('superadmin/add_posyandu') ?>">
+                <div class="icon"><i class="fa fa-child"></i></div>
+                <div class="count"><i class="fa fa-plus"></i></div>
+                <h3 style="color: #1ABB9C;">Tambah Data Posyandu</h3>
+            </a>
+            </div>
+        </div>
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-3 col-xs-12">
+            <div class="tile-stats">
+            <a href="<?= base_url('superadmin/status_gizi') ?>">
                 <div class="count"> <i class="fa fa-bar-chart"></i></div>
                 <h3 style="color: #1ABB9C;">Status Gizi Balita</h3>
+            </a>
             </div>
         </div>
 
@@ -51,8 +61,6 @@
                         $chart_data = [];
                         foreach ($data as $row) {
                             $chart_labels[] = $row['nama']; // We don't need the row ID for the chart
-                            $chart_berat[] = $row['berat_bb'];
-                            $chart_tinggi[] = $row['tinggi_bb'];
                             
                             $tgl_lahir = new DateTime($row['tgl_lahir']);
                             $tgl_sekarang = new DateTime();
@@ -75,20 +83,7 @@
         type: 'line',
         data: {
             labels: <?php echo json_encode($chart_labels); ?>,
-            datasets: [{
-                label: 'Berat Badan (kg)',
-                data: <?php echo json_encode($chart_berat); ?>,
-                fill: false,
-                borderColor: 'darkblue',
-                borderWidth: 3
-            },
-            {
-                label: 'Tinggi Badan (cm)',
-                data: <?php echo json_encode($chart_tinggi); ?>,
-                fill: false,
-                borderColor: 'darkgreen',
-                borderWidth: 3
-            },
+            datasets: [
             {
                 label: 'Umur (tahun)',
                 data: <?php echo json_encode($chart_umur); ?>,
@@ -128,7 +123,7 @@
         </div>
         <div class="animated flipInY col-lg-6 col-md-6 col-sm-6 col-xs-12">
             <div class="tile-stats">
-            <a href="<?= base_url('admin/balita/tambah_data') ?>">
+            <a href="<?= base_url('admin/balita') ?>">
                 <div class="icon"><i class="fa fa-smile-o"></i></div>
                 <div class="count"><i class="fa fa-plus"></i></div>
                 <h3 style="color: #1ABB9C;">Tambah Data Balita</h3>
@@ -137,9 +132,19 @@
         </div>
         <div class="animated flipInY col-lg-3 col-md-3 col-sm-3 col-xs-12">
             <div class="tile-stats">
-            <a href="<?= base_url('admin/posyandu/status_gizi') ?>">
+            <a href="<?= base_url('admin/add_posyandu') ?>">
+                <div class="icon"><i class="fa fa-child"></i></div>
+                <div class="count"><i class="fa fa-plus"></i></div>
+                <h3 style="color: #1ABB9C;">Tambah Data Posyandu</h3>
+            </a>
+            </div>
+        </div>
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-3 col-xs-12">
+            <div class="tile-stats">
+            <a href="<?= base_url('admin/status_gizi') ?>">
                 <div class="count"> <i class="fa fa-bar-chart"></i></div>
                 <h3 style="color: #1ABB9C;">Status Gizi Balita</h3>
+            </a>
             </div>
         </div>
 
@@ -165,8 +170,6 @@
                         $chart_data = [];
                         foreach ($data as $row) {
                             $chart_labels[] = $row['nama']; // We don't need the row ID for the chart
-                            $chart_berat[] = $row['berat_bb'];
-                            $chart_tinggi[] = $row['tinggi_bb'];
                             
                             $tgl_lahir = new DateTime($row['tgl_lahir']);
                             $tgl_sekarang = new DateTime();
@@ -189,20 +192,7 @@
         type: 'line',
         data: {
             labels: <?php echo json_encode($chart_labels); ?>,
-            datasets: [{
-                label: 'Berat Badan (kg)',
-                data: <?php echo json_encode($chart_berat); ?>,
-                fill: false,
-                borderColor: 'darkblue',
-                borderWidth: 3
-            },
-            {
-                label: 'Tinggi Badan (cm)',
-                data: <?php echo json_encode($chart_tinggi); ?>,
-                fill: false,
-                borderColor: 'darkgreen',
-                borderWidth: 3
-            },
+            datasets: [
             {
                 label: 'Umur (tahun)',
                 data: <?php echo json_encode($chart_umur); ?>,

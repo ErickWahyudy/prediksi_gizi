@@ -15,7 +15,7 @@ class Data extends CI_controller
       $this->load->library('form_validation');
       
 	 // error_reporting(0);
-	 if($this->session->userdata('superadmin') != TRUE){
+	 if($this->session->userdata('admin') != TRUE){
      redirect(base_url(''));
      exit;
 	};
@@ -39,13 +39,13 @@ class Data extends CI_controller
                         'tahun'                 =>$tahun,
                         'depan'                 =>FALSE,
                       );
-        $this->load->view('superadmin/posyandu/lihat',$view);
+        $this->load->view('admin/posyandu/lihat',$view);
       }else{
         $view = array('judul'                   =>'Buka Data Posyandu',
                         'aksi'                  =>'lihat',
                         'depan'                 =>TRUE,
                       );
-        $this->load->view('superadmin/posyandu/lihat',$view);
+        $this->load->view('admin/posyandu/lihat',$view);
       }
     }
     
@@ -65,13 +65,13 @@ class Data extends CI_controller
                         'tahun'                 =>$tahun,
                         'depan'                 =>FALSE,
                       );
-        $this->load->view('superadmin/posyandu/add',$view);
+        $this->load->view('admin/posyandu/add',$view);
       }else{
         $view = array('judul'                   =>'Buat Data Posyandu',
                         'aksi'                  =>'lihat',
                         'depan'                 =>TRUE,
                       );
-        $this->load->view('superadmin/posyandu/add',$view);
+        $this->load->view('admin/posyandu/add',$view);
       }
     }
 

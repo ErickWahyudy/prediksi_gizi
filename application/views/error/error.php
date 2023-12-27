@@ -13,7 +13,7 @@
     <meta content='index,follow' name='robots' />
 
     <!-- Favicon -->
-    <link href="<?= base_url('themes/admin') ?>/img/favicon.ico" rel="icon">
+    <link href="<?= base_url('themes') ?>/img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,7 +32,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Favicon -->
-    <link href="<?= base_url('themes/admin') ?>/favicon.ico" rel="icon">
+    <link href="<?= base_url('themes') ?>/favicon.ico" rel="icon">
 </head>
 
 <body>
@@ -41,7 +41,7 @@
     <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="container text-center">
             <div class="row justify-content-center">
-            <img src="<?= base_url('themes/admin') ?>/maintenance.gif" style="width: 420pt; height: 100%; object-fit: cover;">
+            <img src="<?= base_url('themes') ?>/maintenance.gif" style="width: 420pt; height: 100%; object-fit: cover;">
                 <div class="col-lg-6">
                     <i class="bi bi-exclamation-triangle display-1 text-primary"></i>                   
                     <h3 class="mb-4">Page Not Found</h3>

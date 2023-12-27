@@ -5,7 +5,7 @@ use PHPMailer\PHPMailer\Exception;
 
 class Balita extends CI_controller
 {
-	function __construct()
+  function __construct()
 	{
 	 parent:: __construct();
      $this->load->helper('url');
@@ -55,7 +55,7 @@ class Balita extends CI_controller
     }
     
      //mengambil id urut terakhir
-     private function id_judul_urut($value='')
+     private function id_balita_urut($value='')
      {
      $this->m_balita->id_urut();
      $query   = $this->db->get();
@@ -136,7 +136,7 @@ class Balita extends CI_controller
       ];
     } else {
       $SQLinsert = [
-        'id_balita'      =>$this->id_judul_urut(),
+        'id_balita'      =>$this->id_balita_urut(),
         'nama'           =>$this->input->post('nama'),
         'jenis_kelamin'  =>$this->input->post('jenis_kelamin'),
         'tgl_lahir'      =>$this->input->post('tgl_lahir'),
@@ -144,8 +144,6 @@ class Balita extends CI_controller
         'alamat'         =>$this->input->post('alamat'),
         'nama_ayah'      =>$this->input->post('nama_ayah'),
         'nama_ibu'       =>$this->input->post('nama_ibu'),
-        'tinggi_bb'      =>$this->input->post('tinggi_bb'),
-        'berat_bb'       =>$this->input->post('berat_bb'),
       ];
       if ($this->m_balita->add($SQLinsert)) {
         $response = [
@@ -233,8 +231,6 @@ class Balita extends CI_controller
             'alamat'         =>$this->input->post('alamat'),
             'nama_ayah'      =>$this->input->post('nama_ayah'),
             'nama_ibu'       =>$this->input->post('nama_ibu'),
-            'tinggi_bb'      =>$this->input->post('tinggi_bb'),
-            'berat_bb'       =>$this->input->post('berat_bb'),
           ];
           if ($this->m_balita->update($id, $SQLupdate)) {
             $response = [

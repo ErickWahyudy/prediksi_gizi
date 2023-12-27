@@ -103,9 +103,9 @@
                 <h2><?= $data['nama'] ?></h2>
                 <span>
                     <?php if($this->session->userdata('level') == "1"){ ?>
-                    Administrator
+                    Superadmin
                         <?php }elseif($this->session->userdata('level') == "2"){ ?>
-                        Operator
+                        Admin
                             <?php }elseif($this->session->userdata('level') == "3"){ ?>
                             User
                                 <?php } ?>
@@ -126,10 +126,9 @@
                   <li><a href="<?= base_url('superadmin/balita') ?>"><i class="fa fa-child"></i> Data Balita</a></li>
                   <li><a><i class="fa fa-hospital-o"></i> Data Posyandu <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="<?= base_url('superadmin/posyandu/data/add') ?>">Tambah Data Posyandu</a></li>
-                      <li><a href="<?= base_url('superadmin/posyandu/data') ?>">Lihat Data Posyandu</a></li>
-                      <li><a href="<?= base_url('superadmin/posyandu/status_gizi') ?>">Status Gizi</a></li>
-                      <li><a href="<?= base_url('superadmin/posyandu/laporan') ?>">Laporan</a></li>
+                      <li><a href="<?= base_url('superadmin/add_posyandu') ?>">Tambah Data Posyandu</a></li>
+                      <li><a href="<?= base_url('superadmin/data_posyandu') ?>">Lihat Data Posyandu</a></li>
+                      <li><a href="<?= base_url('superadmin/status_gizi') ?>">Status Gizi</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-male"></i> Data Administrator <span class="fa fa-chevron-down"></span></a>
@@ -154,16 +153,12 @@
                 <h3>General</h3>
                 <ul class="nav side-menu">
                   <li><a href="<?= base_url('admin/home') ?>"><i class="fa fa-home"></i> Home</a></li>
-                  <li><a><i class="fa fa-child"></i> Data Balita <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="<?= base_url('admin/balita/tambah_data') ?>">Tambah Data Balita</a></li>
-                      <li><a href="<?= base_url('admin/balita') ?>">Lihat Data Balita</a></li>
-                    </ul>
-                  </li>
+                  <li><a href="<?= base_url('admin/balita') ?>"><i class="fa fa-child"></i> Data Balita</a></li>
                   <li><a><i class="fa fa-hospital-o"></i> Data Posyandu <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="<?= base_url('admin/posyandu/status_gizi') ?>">Status Gizi</a></li>
-                      <li><a href="<?= base_url('admin/posyandu/laporan') ?>">Laporan</a></li>
+                      <li><a href="<?= base_url('admin/add_posyandu') ?>">Tambah Data Posyandu</a></li>
+                      <li><a href="<?= base_url('admin/data_posyandu') ?>">Lihat Data Posyandu</a></li>
+                      <li><a href="<?= base_url('admin/status_gizi') ?>">Status Gizi</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-male"></i> Data Administrator <span class="fa fa-chevron-down"></span></a>

@@ -5,11 +5,10 @@
     <div class="col-md-12 col-sm-12 ">
         <div class="x_panel">
             <div class="x_title">
-                <!-- <a href="" class="btn btn-primary" data-toggle="modal" data-target="#modalTambahBalita"><i
+                <a href="" class="btn btn-primary" data-toggle="modal" data-target="#modalTambahBalita"><i
                         class="fa fa-plus"></i>
-                    Tambah</a> -->
-                <a href="<?= site_url('admin/balita/tambah_data') ?>" class="btn btn-primary"><i
-                        class="fa fa-plus"></i> Tambah</a>
+                    Tambah</a>
+        
 
                 <div class="clearfix"></div>
             </div>
@@ -28,8 +27,6 @@
                                         <th>Nama Ayah</th>
                                         <th>Nama Ibu</th>
                                         <th>Umur</th>
-                                        <th>Tinggi Badan</th>
-                                        <th>Berat Badan</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
@@ -55,8 +52,6 @@
                                         echo $total_bulan . ' Bulan';
                                         ?>
                                     </td>
-                                    <td><?= $balita['tinggi_bb'] ?> cm</td>
-                                    <td><?= $balita['berat_bb'] ?> kg</td>
                                     <td>
                                         <a href="" class="btn btn-warning" data-toggle="modal"
                                             data-target="#edit<?= $balita['id_balita'] ?>"><i class="fa fa-edit"></i>
@@ -143,20 +138,6 @@
                             <td><input type="text" name="nama_ibu" id="nama_ibu" class="form-control" autocomplete="off"
                                     required placeholder="Nama Ibu"></td>
                         </tr>
-                        <tr>
-                            <td><label for="tinggi_bb">Tinggi Badan:</label></td>
-                        </tr>
-                        <tr>
-                            <td><input type="text" name="tinggi_bb" id="tinggi_bb" class="form-control"
-                                    autocomplete="off" required placeholder="Tinggi Badan"></td>
-                        </tr>
-                        <tr>
-                            <td><label for="berat_bb">Berat Badan:</label></td>
-                        </tr>
-                        <tr>
-                            <td><input type="text" name="berat_bb" id="berat_bb" class="form-control"
-                                    autocomplete="off" required placeholder="Berat Badan"></td>
-                        </tr>
 
                         <tr>
                             <td><br><input type="submit" name="kirim" value="Simpan" class="btn btn-success"></td>
@@ -241,20 +222,6 @@
                         <tr>
                             <td><input type="text" name="nama_ibu" id="nama_ibu" class="form-control" autocomplete="off"
                                     value="<?= $balita['nama_ibu'] ?>" required></td>
-                        </tr>
-                        <tr>
-                            <td><label for="tinggi_bb">Tinggi Badan:</label></td>
-                        </tr>
-                        <tr>
-                            <td><input type="text" name="tinggi_bb" id="tinggi_bb" class="form-control"
-                                    autocomplete="off" value="<?= $balita['tinggi_bb'] ?>" required></td>
-                        </tr>
-                        <tr>
-                            <td><label for="berat_bb">Berat Badan:</label></td>
-                        </tr>
-                        <tr>
-                            <td><input type="text" name="berat_bb" id="berat_bb" class="form-control"
-                                    autocomplete="off" value="<?= $balita['berat_bb'] ?>" required></td>
                         </tr>
                         <tr>
                             <td>

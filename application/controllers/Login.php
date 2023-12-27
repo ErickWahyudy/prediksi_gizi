@@ -26,7 +26,7 @@ class Login extends CI_controller
             // Cek data login
             $superadmin = $this->Login_m->Superadmin($nama, $no_hp, $email, md5($password));
             $admin = $this->Login_m->Admin($nama, $no_hp, $email, md5($password));
-            $dosen = $this->Login_m->Dosen($nama, $no_hp, $email, md5($password));
+            $user = $this->Login_m->User($nama, $no_hp, $email, md5($password));
 
             if ($superadmin->num_rows() > 0) {
                 // Handle jika login sebagai superadmin
@@ -60,22 +60,22 @@ class Login extends CI_controller
                 $this->session->set_userdata($sessionAdmin);
                 $this->session->set_flashdata('pesan', '<div class="btn btn-success">Anda Berhasil Login .....</div>');
                 redirect(base_url('admin/home'));
-            } elseif ($dosen->num_rows() > 0) {
-                // Handle jika login sebagai dosen
-                $DataDosen = $dosen->row_array();
-                $sessionDosen = array(
-                    'dosen'             => TRUE,
-                    'id_pengguna'       => $DataDosen['id_pengguna'],
-                    'email'             => $DataDosen['email'],
-                    'password'          => $DataDosen['password'],
-                    'nama'              => $DataDosen['nama'],
-                    'no_hp'              => $DataDosen['no_hp'],
-                    'keterangan'        => $DataDosen['keterangan'],
-                    'level'             => $DataDosen['id_level'],
+            } elseif ($user->num_rows() > 0) {
+                // Handle jika login sebagai user
+                $DataUser = $user->row_array();
+                $sessionUser = array(
+                    'user'             => TRUE,
+                    'id_pengguna'       => $DataUser['id_pengguna'],
+                    'email'             => $DataUser['email'],
+                    'password'          => $DataUser['password'],
+                    'nama'              => $DataUser['nama'],
+                    'no_hp'              => $DataUser['no_hp'],
+                    'keterangan'        => $DataUser['keterangan'],
+                    'level'             => $DataUser['id_level'],
                 );
-                $this->session->set_userdata($sessionDosen);
+                $this->session->set_userdata($sessionUser);
                 $this->session->set_flashdata('pesan', '<div class="btn btn-success">Anda Berhasil Login .....</div>');
-                redirect(base_url('dosen/home'));
+                redirect(base_url('user/home'));
             } else {
                 // Periksa apakah email/username benar
                 $isEmailValid = $this->Login_m->IsEmailValid($email);

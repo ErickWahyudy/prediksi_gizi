@@ -57,5 +57,13 @@ $route['maintenance'] = 'notfound/dalam_pengembangan';
 $route['reset_password']            = 'reset_password/kirim_email';
 $route['password_baru/(:any)']      = 'reset_password/reset/$1';
 
+//Posyandu
+$route['superadmin/add_posyandu']   = 'superadmin/posyandu/data/add';
+$route['superadmin/data_posyandu']  = 'superadmin/posyandu/data';
+$route['superadmin/status_gizi']    = 'superadmin/posyandu/result/status_gizi';
+$route['admin/add_posyandu']        = 'admin/posyandu/data/add';
+$route['admin/data_posyandu']       = 'admin/posyandu/data';
+$route['admin/status_gizi']         = 'admin/posyandu/result/status_gizi';
+
 
 $route['translate_uri_dashes'] = FALSE;

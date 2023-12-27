@@ -21,7 +21,7 @@ class login_m extends CI_model
   return $this->db->query("SELECT * from tb_pengguna where (nama='$nama' OR no_hp='$no_hp' OR email='$email') AND password='$password' AND id_level='$id_level' limit 1");
  }
 
- public function dosen($nama='', $no_hp='', $email='', $password='', $id_level='3')
+ public function user($nama='', $no_hp='', $email='', $password='', $id_level='3')
  {
   return $this->db->query("SELECT * from tb_pengguna where (nama='$nama' OR no_hp='$no_hp' OR email='$email') AND password='$password' AND id_level='$id_level' limit 1");
  }

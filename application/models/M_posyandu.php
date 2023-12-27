@@ -10,12 +10,14 @@ private $table = 'tb_posyandu';
 private $table2 = 'tb_balita';
 
 //View
-public function view($value='')
+public function view($bulan='',$tahun='')
 {
   $this->db->select ('*');
   $this->db->from ($this->table);
   $this->db->join($this->table2, 'tb_posyandu.id_balita = tb_balita.id_balita');
-  $this->db->order_by('nama', 'ASC');
+  $this->db->where('bulan', $bulan);
+  $this->db->where('tahun', $tahun);
+  $this->db->order_by('id_posyandu', 'ASC');
   return $this->db->get();
 }
 
