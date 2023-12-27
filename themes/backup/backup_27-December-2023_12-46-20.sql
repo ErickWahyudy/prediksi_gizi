@@ -21,6 +21,7 @@ INSERT INTO `tb_balita` (`id_balita`, `nama`, `jenis_kelamin`, `tgl_lahir`, `tem
 INSERT INTO `tb_balita` (`id_balita`, `nama`, `jenis_kelamin`, `tgl_lahir`, `tempat_lahir`, `alamat`, `nama_ayah`, `nama_ibu`) VALUES ('B0036Xvl02', 'Ragil Bayu Setiawan', 'Laki-laki', '2022-01-25', 'Ponorogo', 'Babadan', 'Joni', 'Sri');
 INSERT INTO `tb_balita` (`id_balita`, `nama`, `jenis_kelamin`, `tgl_lahir`, `tempat_lahir`, `alamat`, `nama_ayah`, `nama_ibu`) VALUES ('B0047BMGKC', 'Afnan Alghofar', 'Laki-laki', '2020-03-26', 'Ponorogo', 'Siman', 'Badrus', 'Hindi');
 INSERT INTO `tb_balita` (`id_balita`, `nama`, `jenis_kelamin`, `tgl_lahir`, `tempat_lahir`, `alamat`, `nama_ayah`, `nama_ibu`) VALUES ('B005VFgM6v', 'Radhea Salsabila Calista A', 'Perempuan', '2021-06-26', 'Ponorogo', 'Slahung', 'Bandi', 'Sumi');
+INSERT INTO `tb_balita` (`id_balita`, `nama`, `jenis_kelamin`, `tgl_lahir`, `tempat_lahir`, `alamat`, `nama_ayah`, `nama_ibu`) VALUES ('B006JyKhLn', 'Amelia Shintya Putri', 'Perempuan', '2021-06-27', 'Ponorogo', 'Kauman', 'Bar', 'Rial');
 
 
 #
@@ -78,7 +79,7 @@ CREATE TABLE `tb_pengguna` (
   CONSTRAINT `tb_pengguna_ibfk_1` FOREIGN KEY (`id_level`) REFERENCES `tb_level` (`id_level`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `tb_pengguna` (`id_pengguna`, `nama`, `no_hp`, `keterangan`, `email`, `password`, `foto_profile`, `id_level`) VALUES ('A001bnHDs', 'Erik W', '081456141227', 'Ini admin', 'erik@gmail.com', '202cb962ac59075b964b07152d234b70', 'profile_656f409c3b590.jpeg', '1');
+INSERT INTO `tb_pengguna` (`id_pengguna`, `nama`, `no_hp`, `keterangan`, `email`, `password`, `foto_profile`, `id_level`) VALUES ('A001bnHDs', 'Erik W', '081456141227', 'Ini admin', 'erik@gmail.com', '202cb962ac59075b964b07152d234b70', 'profile_658bb959385e8.jpeg', '1');
 INSERT INTO `tb_pengguna` (`id_pengguna`, `nama`, `no_hp`, `keterangan`, `email`, `password`, `foto_profile`, `id_level`) VALUES ('A002hfv3Ec', 'Budi', '186361', 'Faskes', 'budi@gmail.com', '202cb962ac59075b964b07152d234b70', '', '2');
 INSERT INTO `tb_pengguna` (`id_pengguna`, `nama`, `no_hp`, `keterangan`, `email`, `password`, `foto_profile`, `id_level`) VALUES ('A0035j2ctA', 'Dika', '927762', 'Kepala Lab', 'dika@gmail.com', '202cb962ac59075b964b07152d234b70', '', '2');
 
@@ -106,5 +107,6 @@ INSERT INTO `tb_posyandu` (`id_posyandu`, `id_balita`, `umur`, `tinggi_bb`, `ber
 INSERT INTO `tb_posyandu` (`id_posyandu`, `id_balita`, `umur`, `tinggi_bb`, `berat_bb`, `bulan`, `tahun`) VALUES ('P003pgKdHE', 'B0036Xvl02', '23', '80', '11', '12', '2023');
 INSERT INTO `tb_posyandu` (`id_posyandu`, `id_balita`, `umur`, `tinggi_bb`, `berat_bb`, `bulan`, `tahun`) VALUES ('P004bbYsLS', 'B0047BMGKC', '45', '95', '12', '12', '2023');
 INSERT INTO `tb_posyandu` (`id_posyandu`, `id_balita`, `umur`, `tinggi_bb`, `berat_bb`, `bulan`, `tahun`) VALUES ('P005V0fDzM', 'B005VFgM6v', '30', '89', '12.6', '12', '2023');
+INSERT INTO `tb_posyandu` (`id_posyandu`, `id_balita`, `umur`, `tinggi_bb`, `berat_bb`, `bulan`, `tahun`) VALUES ('P006THacYJ', 'B006JyKhLn', '30', '84', '10', '12', '2023');
 
 

@@ -29,7 +29,7 @@ public function viewAdmin($value='')
 }
 
 //Dosen
-public function viewDosen($value='')
+public function viewUser($value='')
 {
   $this->db->select ('*');
   $this->db->from ($this->table);

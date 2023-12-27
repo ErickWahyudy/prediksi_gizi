@@ -131,6 +131,7 @@
                       <li><a href="<?= base_url('superadmin/status_gizi') ?>">Status Gizi</a></li>
                     </ul>
                   </li>
+                  <li><a href="<?= base_url('superadmin/pengguna/user') ?>"><i class="fa fa-users"></i> Data User</a></li>
                   <li><a><i class="fa fa-male"></i> Data Administrator <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="<?= base_url('superadmin/pengguna/admin') ?>">Data Admin</a></li>
@@ -161,6 +162,7 @@
                       <li><a href="<?= base_url('admin/status_gizi') ?>">Status Gizi</a></li>
                     </ul>
                   </li>
+                  <li><a href="<?= base_url('admin/pengguna/user') ?>"><i class="fa fa-users"></i> Data User</a></li>
                   <li><a><i class="fa fa-male"></i> Data Administrator <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="<?= base_url('admin/pengguna/admin') ?>">Data Admin</a></li>
@@ -176,6 +178,19 @@
               </div>
 
               <?php }elseif($this->session->userdata('level') == "3"){ ?>
+                <div class="menu_section">
+                <h3>General</h3>
+                <ul class="nav side-menu">
+                  <li><a href="<?= base_url('user/home') ?>"><i class="fa fa-home"></i> Home</a></li>
+                </ul>
+              </div>
+              <div class="menu_section">
+                <h3>Live On</h3>
+                <ul class="nav side-menu">
+                  <li><a href="<?= base_url('user/profile') ?>"><i class="fa fa-user"></i> Profile</a></li>
+                </ul>
+              </div>
+
 
               <?php } ?>
 

@@ -46,6 +46,18 @@ class Pengguna extends CI_controller
       $this->load->view('superadmin/pengguna/admin',$view);
     }
 
+    //User
+    public function user($value='')
+    {
+     $view = array('judul'     =>'Data User',
+                    'aksi'      =>'user',
+                    'level'     =>$this->db->get('tb_level')->result_array(),
+                    'data'      =>$this->m_pengguna->viewUser()->result_array(),
+                  );
+
+      $this->load->view('superadmin/pengguna/user',$view);
+    }
+
     private function acak_id($panjang)
     {
         $karakter = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890';

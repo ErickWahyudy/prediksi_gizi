@@ -250,7 +250,7 @@ if($aksi == "lihat"):
                     <tr>
                         <td>
                             <input type="file" name="foto" id="bukti_foto_profile" class="form-control"
-                                onchange="previewLOGO()">
+                                onchange="previewLOGO()" autocomplete="off" accept="image/*" />
                         </td>
                     </tr>
                     <tr>

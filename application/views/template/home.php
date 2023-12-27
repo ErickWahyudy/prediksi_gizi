@@ -9,7 +9,6 @@
                 <div class="icon"><i class="fa fa-tasks"></i></div>
                 <div class="count"><?= $count_balita['count_balita'] ?></div>
                 <h3>Jumlah Balita yang terdaftar</h3>
-                <p><a href="<?= base_url('superadmin/balita') ?>" style="color: #1ABB9C;">Lihat Data Balita</a></p>
             </div>
         </div>
         <div class="animated flipInY col-lg-3 col-md-3 col-sm-3 col-xs-12">
@@ -118,7 +117,6 @@
                 <div class="icon"><i class="fa fa-tasks"></i></div>
                 <div class="count"><?= $count_balita['count_balita'] ?></div>
                 <h3>Jumlah Balita yang terdaftar</h3>
-                <p><a href="<?= base_url('admin/balita') ?>" style="color: #1ABB9C;">Lihat Data Balita</a></p>
             </div>
         </div>
         <div class="animated flipInY col-lg-6 col-md-6 col-sm-6 col-xs-12">

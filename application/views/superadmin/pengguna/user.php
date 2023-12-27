@@ -21,7 +21,7 @@
                                         <th>No</th>
                                         <th>Nama</th>
                                         <th>No HP</th>
-                                        <th>Keterangan</th>
+                                        <th>Alamat</th>
                                         <th>Email</th>
                                         <th>Level</th>
                                         <th>Aksi</th>
@@ -40,6 +40,8 @@
                                                 echo "Superadmin";
                                             }elseif($pengguna['id_level'] == 2){
                                                 echo "Admin";
+                                            }elseif($pengguna['id_level'] == 3){
+                                                echo "User";
                                             }
                                             ?>
                                     <td>
@@ -103,7 +105,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <label for="keterangan">Keterangan:</label>
+                                <label for="alamat">Alamat:</label>
                             </td>
                         </tr>
                         <tr>
@@ -112,6 +114,7 @@
                                     autocomplete="off" required>
                             </td>
                         </tr>
+                      
                         <tr>
                             <td>
                                 <label for="email">Email:</label>
@@ -143,7 +146,7 @@
                             <td>
                                 <select name="id_level" class="form-control">
                                     <?php foreach($level as $lev): ?>
-                                    <?php if($lev['id_level'] == 2): ?>
+                                    <?php if($lev['id_level'] == 3): ?>
                                     <option value="<?= $lev['id_level'] ?>">
                                         <?= $lev['level'] ?>
                                     </option>
@@ -206,15 +209,15 @@
                         </tr>
                         <tr>
                             <td>
-                                <label for="keterangan">Keterangan:</label>
+                                <label for="alamat">Alamat:</label>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <input type="text" name="keterangan" id="keterangan" class="form-control" autocomplete="off"
-                                    required value="<?= $pengguna['keterangan'] ?>">
+                                <input type="text" name="keterangan" id="keterangan" class="form-control" autocomplete="off" required
+                                    value="<?= $pengguna['keterangan'] ?>">
                             </td>
-                        </tr>
+                        </tr>                       
                         <tr>
                             <td>
                                 <label for="email">Email:</label>
@@ -235,7 +238,7 @@
                             <td>
                                 <select name="id_level" class="form-control">
                                     <?php foreach($level as $lev): ?>
-                                    <?php if($lev['id_level'] == 2): ?>
+                                    <?php if($lev['id_level'] == 3): ?>
                                     <option value="<?= $lev['id_level'] ?>">
                                         <?= $lev['level'] ?>
                                     </option>
@@ -360,7 +363,7 @@ $(document).ready(function() {
     $('#add').submit(function(e) {
         e.preventDefault();
         $.ajax({
-            url: "<?= site_url('admin/pengguna/api_add') ?>",
+            url: "<?= site_url('superadmin/pengguna/api_add') ?>",
             type: "POST",
             data: new FormData(this),
             processData: false,
@@ -413,7 +416,7 @@ $(document).on('submit', '#edit', function(e) {
 
     $.ajax({
         type: "POST",
-        url: "<?php echo site_url('admin/pengguna/api_edit/') ?>" + form_data.get(
+        url: "<?php echo site_url('superadmin/pengguna/api_edit/') ?>" + form_data.get(
             'id_pengguna'),
         dataType: "json",
         data: form_data,
@@ -458,7 +461,7 @@ $(document).on('submit', '#gantipassword', function(e) {
 
     $.ajax({
         type: "POST",
-        url: "<?php echo site_url('admin/pengguna/api_password/') ?>" + form_data.get(
+        url: "<?php echo site_url('superadmin/pengguna/api_password/') ?>" + form_data.get(
             'id_pengguna'),
         dataType: "json",
         data: form_data,
@@ -509,7 +512,7 @@ function hapuspengguna(id_pengguna) {
         if (result.value) { // Only delete the data if the user clicked on the confirm button
             $.ajax({
                 type: "POST",
-                url: "<?php echo site_url('admin/pengguna/api_hapus/') ?>" +
+                url: "<?php echo site_url('superadmin/pengguna/api_hapus/') ?>" +
                     id_pengguna,
                 dataType: "json",
             }).done(function() {
