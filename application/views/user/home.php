@@ -111,6 +111,9 @@
         </div>
     </div>
 </div>
+<div>
+    <a href="<?= base_url('user/home') ?>" class="btn btn-danger">Kembali</a>
+</div>
 
 <?php endif; ?>
 <?php $this->load->view('template/footer'); ?>
