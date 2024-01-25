@@ -25,6 +25,8 @@
 
     <!-- Custom Theme Style -->
     <link href="<?= base_url('themes/gentelella') ?>/build/css/custom.min.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="<?= base_url('themes/gentelella') ?>/vendors/jquery/dist/jquery.min.js"></script>
 
     <!-- Datatables -->
     <link href="<?= base_url('themes/gentelella') ?>/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
@@ -36,7 +38,6 @@
     <!-- sweetalert -->
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.min.css'>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.12.15/dist/sweetalert2.all.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
     <!-- select2 -->
     <link rel="stylesheet" href="<?= base_url('themes/gentelella') ?>/vendors/select2/dist/css/select2.min.css">

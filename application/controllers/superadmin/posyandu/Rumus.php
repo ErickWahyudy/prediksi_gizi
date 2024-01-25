@@ -1,87 +1,72 @@
 <?php
-/**
- * PHP for Codeigniter
- *
- * @package        	CodeIgniter
- * @pengembang		Kassandra Production (https://kassandra.my.id)
- * @Author			@erikwahyudy
- * @version			3.0
- */
-
 defined('BASEPATH') OR exit('No direct script access allowed');
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
 
-class Home extends CI_controller
+class Rumus extends CI_controller
 {
-	function __construct()
-	{
-	 parent:: __construct();
-   $this->load->helper('url');
-   // needed ???
-   $this->load->database();
-   $this->load->library('session');
-    $this->load->library('form_validation');
-	 // error_reporting(0);
-	 if($this->session->userdata('user') != TRUE){
-    redirect(base_url(''));
-     exit;
-	};
-   $this->load->model('m_balita'); 
-   $this->load->model('m_posyandu');
-}
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->database();
+        $this->load->library('session');
 
-	public function index()
-	{
-		if (isset($_POST['cari'])) {
-			//cek data apabila berhasi Di kirim maka postdata akan melakukan cek .... dan sebaliknya
-			$bulan =$this->input->post('bulan');
-			$tahun =$this->input->post('tahun');
-
-			$data_balita = $this->m_posyandu->view($bulan, $tahun)->result_array();
-            $result = [];
-
-            foreach ($data_balita as $balita) {
-                $berat_badan    = $balita['berat_bb'];
-                $tinggi_badan   = $balita['tinggi_bb'];
-                $umur           = $balita['umur'];
-                $jenis_kelamin  = $balita['jenis_kelamin'];
-
-                // Fuzzyfikasi
-                $umur_fuzzy = $this->fuzzyUmur($umur);
-                $berat_fuzzy = $this->fuzzyBeratBadan($berat_badan, $jenis_kelamin);
-                $tinggi_fuzzy = $this->fuzzyTinggiBadan($tinggi_badan, $jenis_kelamin);
-
-                // Inferensi
-                $rules = $this->applyRules($umur_fuzzy, $berat_fuzzy, $tinggi_fuzzy);
-            
-                // Defuzzyfikasi
-                $defuzzy = $this->defuzzify($rules);
-
-                $result[] = [
-                    'nama' => $balita['nama'],
-                    'jenis_kelamin' => $balita['jenis_kelamin'],
-                    'umur' => $umur,
-                    'berat_badan' => $berat_badan,
-                    'tinggi_badan' => $tinggi_badan,
-                    'total_alpha' => $defuzzy['total_alpha'],
-                    'total_alpha_z' => $defuzzy['total_alpha_z'],
-                    'defuzzy' => $defuzzy['final_result'],
-                    'status_gizi' => $this->getStatusGizi($defuzzy['final_result']),
-                ];
-            }
-
-            $data['result'] = $result;
-            $data['judul'] = 'Hasil Status Gizi';
-            $data['bulan'] = $bulan;
-            $data['tahun'] = $tahun;
-            $data['depan'] = FALSE;
-            $this->load->view('user/home', $data);
-        } else {
-            $data['judul'] = 'Hasil Status Gizi';
-            $data['depan'] = TRUE;
-            $this->load->view('user/home', $data);
+        if ($this->session->userdata('superadmin') != TRUE) {
+            redirect(base_url(''));
+            exit;
         }
+
+        $this->load->model('m_balita');
+        $this->load->model('m_posyandu');
+    }
+
+    public function status_gizi()
+    {
+        // Data balita dimasukkan manual
+        $nama_balita = 'Satria zidane pangarsa';
+        $jenis_kelamin = 'Laki-laki';
+        $umur = 23; // bulan
+        $berat_badan = 11; // kg
+        $tinggi_badan = 80; // cm
+
+        // Fuzzyfikasi
+        $umur_fuzzy = $this->fuzzyUmur($umur);
+        $berat_fuzzy = $this->fuzzyBeratBadan($berat_badan, $jenis_kelamin);
+        $tinggi_fuzzy = $this->fuzzyTinggiBadan($tinggi_badan, $jenis_kelamin);
+
+        // Inferensi
+        $rules = $this->applyRules($umur_fuzzy, $berat_fuzzy, $tinggi_fuzzy);
+       
+        // Defuzzyfikasi
+        $defuzzy = $this->defuzzify($rules);
+
+        // Tampilkan hasil sesuai format yang diminta
+        $data['result'] = [
+            [
+                'no' => 1,
+                'nama' => $nama_balita,
+                'jenis_kelamin' => $jenis_kelamin,
+                'berat_badan' => $berat_badan,
+                'tinggi_badan' => $tinggi_badan,
+                'umur' => $umur,
+                'umur_fase1' => $umur_fuzzy[0],
+                'umur_fase2' => $umur_fuzzy[1],
+                'umur_fase3' => $umur_fuzzy[2],
+                'umur_fase4' => $umur_fuzzy[3],
+                'umur_fase5' => $umur_fuzzy[4],
+                'bb_ringan' => $berat_fuzzy[0],
+                'bb_sedang' => $berat_fuzzy[1],
+                'bb_lebih' => $berat_fuzzy[2],
+                'tb_pendek' => $tinggi_fuzzy[0],
+                'tb_normal' => $tinggi_fuzzy[1],
+                'tb_tinggi' => $tinggi_fuzzy[2],
+                'total_alpha' => $defuzzy['total_alpha'],
+                'total_alpha_z' => $defuzzy['total_alpha_z'],
+                'defuzzy' => $defuzzy['final_result'],
+                'status_gizi' => $this->getStatusGizi($defuzzy['final_result']),
+            ]
+        ];
+
+        $data['judul'] = 'Hasil Status Gizi';
+        $this->load->view('superadmin/posyandu/rumus', $data);
     }
 
     private function fuzzyUmur($umur)

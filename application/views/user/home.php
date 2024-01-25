@@ -97,7 +97,7 @@
                                     <td><?= $balita['umur']; ?></td>
                                     <td><?= $balita['berat_badan']; ?></td>
                                     <td><?= $balita['tinggi_badan']; ?></td>
-                                    <td><?= number_format($balita['final_result'], 3); ?></td>
+                                    <td><?= $balita['defuzzy']; ?></td>
                                     <td><?= $balita['status_gizi']; ?></td>
                                 </tr>
                                 <?php $no++; endforeach; ?>

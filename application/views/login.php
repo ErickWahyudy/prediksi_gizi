@@ -24,6 +24,8 @@
 
     <!-- Custom Theme Style -->
     <link href="<?= base_url('themes/gentelella') ?>/build/css/custom.min.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="<?= base_url('themes/gentelella') ?>/vendors/jquery/dist/jquery.min.js"></script>
 
     <!-- Favicon -->
     <link href="<?= base_url('themes') ?>/favicon.ico" rel="icon">
@@ -76,16 +78,22 @@
 
         <div id="register" class="animate form registration_form">
           <section class="login_content">
-            <form>
-              <h1>Create Account</h1>
+            <form id="add" method="post">
+              <h1>Create Account User</h1>
               <div>
-                <input type="text" class="form-control" placeholder="Username" required="" />
+                <input type="text" class="form-control" name="nama" placeholder="Nama Lengkap" required="" autocomplete="off" />
               </div>
               <div>
-                <input type="email" class="form-control" placeholder="Email" required="" />
+                <input type="text" class="form-control" name="no_hp" placeholder="No HP" required="" autocomplete="off" />
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Password" required="" />
+                <input type="text" class="form-control" name="keterangan" placeholder="Alamat" required="" autocomplete="off" />
+              </div>
+              <div>
+                <input type="email" class="form-control" name="email" placeholder="Email" required="" autocomplete="off" />
+              </div>
+              <div>
+                <input type="password" class="form-control" name="password" placeholder="Password" required="" autocomplete="off" />
               </div>
               <div>
                 <button type="submit" class="btn btn-primary submit">Submit</button>
@@ -114,3 +122,56 @@
     </div>
   </body>
 </html>
+<script type="text/javascript">
+  //register data
+  $(document).ready(function() {
+      $('#add').submit(function(e) {
+          e.preventDefault();
+          $.ajax({
+              url: "<?= site_url('register/api_add') ?>",
+              type: "POST",
+              data: new FormData(this),
+              processData: false,
+              contentType: false,
+              cache: false,
+              async: false,
+              success: function(data) {
+                  if (data.status) {
+                      $('#add')[0].reset();
+                      swal({
+                          title: "Berhasil",
+                          text: "Data berhasil ditambahkan",
+                          type: "success",
+                          showConfirmButton: true,
+                          confirmButtonText: "OKEE",
+                      });
+                      setTimeout(function() {
+                          window.location.href = "<?= site_url('login') ?>";
+                      }, 1000);
+                  } else {
+                      // Hapus tag HTML dari pesan error
+                      var errorMessage = $('<div>').html(data.message).text();
+                      swal({
+                          title: "Gagal",
+                          text: errorMessage, // Menampilkan pesan error dari server
+                          type: "error",
+                          showConfirmButton: true,
+                          confirmButtonText: "OK",
+                      });
+                  }
+              },
+              error: function(xhr, textStatus, errorThrown) {
+                  // Menampilkan pesan error jika terjadi kesalahan pada AJAX request
+                  swal({
+                      title: "Error",
+                      text: "Terjadi kesalahan saat mengirim data",
+                      type: "error",
+                      showConfirmButton: true,
+                      confirmButtonText: "OK",
+                  });
+              }
+          });
+      });
+  });
+  
+  </script>
