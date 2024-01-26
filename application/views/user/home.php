@@ -85,7 +85,6 @@
                                         <th>Umur (bulan)</th>
                                         <th>Berat Badan (kg)</th>
                                         <th>Tinggi Badan (cm)</th>
-                                        <th>Z-Score </th>
                                         <th>Status Gizi</th>
                                     </tr>
                                 </thead>
@@ -97,7 +96,6 @@
                                     <td><?= $balita['umur']; ?></td>
                                     <td><?= $balita['berat_badan']; ?></td>
                                     <td><?= $balita['tinggi_badan']; ?></td>
-                                    <td><?= $balita['defuzzy']; ?></td>
                                     <td><?= $balita['status_gizi']; ?></td>
                                 </tr>
                                 <?php $no++; endforeach; ?>

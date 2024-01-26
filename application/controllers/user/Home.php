@@ -334,9 +334,9 @@ class Home extends CI_controller
     
             // Return the results with the correct format
             return [
-                'total_alpha' => round($total_alpha, 3),
-                'total_alpha_z' => round($total_alpha_z, 3),
-                'final_result' => round($total_alpha_z / $total_alpha, 3),
+                'total_alpha' => round($total_alpha, 2),
+                'total_alpha_z' => round($total_alpha_z, 2),
+                'final_result' => round($total_alpha_z / $total_alpha, 2),
             ];
         } else {
             // If total_alpha is zero, return default values

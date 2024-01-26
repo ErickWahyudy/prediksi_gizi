@@ -85,9 +85,7 @@
                                         <th>Umur (bulan)</th>
                                         <th>Berat Badan (kg)</th>
                                         <th>Tinggi Badan (cm)</th>
-                                        <th>Total Alpha</th>
-                                        <th>Total Alpha x Z</th>
-                                        <th>Defuzzyfikasi (Z-score)</th>
+                                        <th>Z-score</th>
                                         <th>Status Gizi</th>
                                     </tr>
                                 </thead>
@@ -99,8 +97,6 @@
                                     <td><?= $balita['umur']; ?></td>
                                     <td><?= $balita['berat_badan']; ?></td>
                                     <td><?= $balita['tinggi_badan']; ?></td>
-                                    <td><?= $balita['total_alpha']; ?></td>
-                                    <td><?= $balita['total_alpha_z']; ?></td>
                                     <td><?= $balita['defuzzy']; ?></td>
                                     <td><?= $balita['status_gizi']; ?></td>
                                 </tr>

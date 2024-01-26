@@ -63,8 +63,14 @@
                             
                             $tgl_lahir = new DateTime($row['tgl_lahir']);
                             $tgl_sekarang = new DateTime();
-                            $umur = $tgl_lahir->diff($tgl_sekarang)->y;
-                            $chart_umur[] = $umur;
+                                        
+                            $umur_tahun = $tgl_lahir->diff($tgl_sekarang)->y;
+                            $umur_bulan = $tgl_lahir->diff($tgl_sekarang)->m;
+                            $umur_hari = $tgl_lahir->diff($tgl_sekarang)->d;
+                                        
+                            $total_bulan = ($umur_tahun * 12) + $umur_bulan;
+                            $chart_umur[] = $total_bulan;
+
                         }
                         ?>
 
@@ -84,7 +90,7 @@
             labels: <?php echo json_encode($chart_labels); ?>,
             datasets: [
             {
-                label: 'Umur (tahun)',
+                label: 'Umur (bulan)',
                 data: <?php echo json_encode($chart_umur); ?>,
                 fill: false,
                 borderColor: 'darkred',
@@ -112,14 +118,14 @@
     
     <div class="row" style="display: inline-block;">
     <div class="top_tiles">
-        <div class="animated flipInY col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-3 col-xs-12">
             <div class="tile-stats">
                 <div class="icon"><i class="fa fa-tasks"></i></div>
                 <div class="count"><?= $count_balita['count_balita'] ?></div>
                 <h3>Jumlah Balita yang terdaftar</h3>
             </div>
         </div>
-        <div class="animated flipInY col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-3 col-xs-12">
             <div class="tile-stats">
             <a href="<?= base_url('admin/balita') ?>">
                 <div class="icon"><i class="fa fa-smile-o"></i></div>
@@ -171,8 +177,13 @@
                             
                             $tgl_lahir = new DateTime($row['tgl_lahir']);
                             $tgl_sekarang = new DateTime();
-                            $umur = $tgl_lahir->diff($tgl_sekarang)->y;
-                            $chart_umur[] = $umur;
+                                        
+                            $umur_tahun = $tgl_lahir->diff($tgl_sekarang)->y;
+                            $umur_bulan = $tgl_lahir->diff($tgl_sekarang)->m;
+                            $umur_hari = $tgl_lahir->diff($tgl_sekarang)->d;
+                                        
+                            $total_bulan = ($umur_tahun * 12) + $umur_bulan;
+                            $chart_umur[] = $total_bulan;
                         }
                         ?>
 
@@ -192,7 +203,7 @@
             labels: <?php echo json_encode($chart_labels); ?>,
             datasets: [
             {
-                label: 'Umur (tahun)',
+                label: 'Umur (bulan)',
                 data: <?php echo json_encode($chart_umur); ?>,
                 fill: false,
                 borderColor: 'darkred',
